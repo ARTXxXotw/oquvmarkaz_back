@@ -185,6 +185,7 @@ const io = new Server(server, {
    
  
    socket.on("send_message", async (data) => {
+   console.log(data.image);
      await pool.query(
        "INSERT INTO messages (room, author, message, time) VALUES ($1, $2, $3, $4)",
        [data.room, data.author, data.message, data.time]

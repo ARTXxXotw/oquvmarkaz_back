@@ -94,7 +94,7 @@ CREATE TABLE  course_theme_comment (
     "id" serial primary key,
     "theme" integer NOT NULL,
     "image" TEXT,
-    "text" VARCHAR (50) NOT NULL,
+    "text" TEXT,
     "subcomment" integer,
     "user_id" VARCHAR(50) NOT NULL,
     "time_create" timestamp default current_timestamp not null,
