@@ -108,13 +108,11 @@ router.get("/super/registerCourse",ensureToken, (req,res)=>{
 })
 
 router.get('/mycourse/:id', ensureToken , (req,res)=>{
-    console.log("Asas");
-    pool.query("SELECT * FROM registerCourse", (err, result) => {
+    pool.query("SELECT * FROM registerCourse where users=$1", [req.params.id], (err, result) => {
         if (!err) {
-           var a=result.rows.filter(item=>req.params.id==item.id)
-            res.status(200).send(a)
+            res.status(200).send(result.rows)
         } else {
-            res.send(err)
+            res.status(400).send(err)
         }
     })
 })
